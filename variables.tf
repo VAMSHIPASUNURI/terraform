@@ -61,7 +61,7 @@ variable "max_size" {
 variable "instance_types" {
   type        = list(string)
   description = "Instance types for nodes"
-  default     = ["t3.medium"]
+  default     = ["t3.micro"]
 }
 
 variable "tags" {

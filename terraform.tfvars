@@ -10,7 +10,7 @@ private_subnet_cidrs = ["10.0.1.0/24", "10.0.2.0/24"]
 desired_size   = 2
 min_size       = 1
 max_size       = 4
-instance_types = ["t3.medium"]
+instance_types = ["t3.micro"]
 
 secrets_manager_secret_name = "eks-credentials"
 
