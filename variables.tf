@@ -72,3 +72,10 @@ variable "tags" {
     Project     = "eks-cluster"
   }
 }
+
+variable "secrets_manager_secret_name" {
+  type        = string
+  description = "AWS Secrets Manager secret name for credentials"
+  default     = "eks-credentials"
+}
+

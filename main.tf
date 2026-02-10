@@ -3,6 +3,24 @@ data "aws_availability_zones" "available" {
   state = "available"
 }
 
+# ==================== AWS Secrets Manager ====================
+
+# Retrieve secret from AWS Secrets Manager
+data "aws_secretsmanager_secret" "credentials" {
+  name = var.secrets_manager_secret_name
+}
+
+# Get the secret version
+data "aws_secretsmanager_secret_version" "credentials" {
+  secret_id = data.aws_secretsmanager_secret.credentials.id
+}
+
+# Parse the secret (if JSON format)
+locals {
+  credentials = jsondecode(data.aws_secretsmanager_secret_version.credentials.secret_string)
+  # Access individual values like: local.credentials.username, local.credentials.password
+}
+
 # ==================== VPC Resources ====================
 
 # VPC

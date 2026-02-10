@@ -62,3 +62,10 @@ output "configure_kubectl" {
   description = "Command to configure kubectl"
   value       = "aws eks update-kubeconfig --region ${var.aws_region} --name ${aws_eks_cluster.main.name}"
 }
+
+output "credentials_secret_arn" {
+  description = "ARN of the Secrets Manager secret containing credentials"
+  value       = data.aws_secretsmanager_secret.credentials.arn
+  sensitive   = true
+}
+
